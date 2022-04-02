@@ -1,9 +1,10 @@
 ﻿<Application x:Class="WeatherForecast.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:WeatherForecast"
-             StartupUri="MainWindow.xaml">
+             xmlns:vml ="clr-namespace:WeatherForecast.ViewModel"
+             StartupUri="View/MainWindow.xaml"
+             >
     <Application.Resources>
-         
+        <vml:ViewModelLocator x:Key="VML"/>
     </Application.Resources>
 </Application>

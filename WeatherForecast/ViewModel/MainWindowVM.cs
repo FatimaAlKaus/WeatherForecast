@@ -10,33 +10,14 @@
     {
         private readonly IWeatherForecastService _weatherService;
 
-        private int _lat;
-        private int _lon;
-
         public MainWindowVM(IWeatherForecastService weatherService)
         {
             _weatherService = weatherService;
         }
 
-        public int Lon
-        {
-            get => _lon;
-            set
-            {
-                _lon = value;
-                RaisePropertiesChanged("Lon");
-            }
-        }
+        public int Lon { get; set; }
 
-        public int Lat
-        {
-            get => _lat;
-            set
-            {
-                _lat = value;
-                RaisePropertiesChanged("Lat");
-            }
-        }
+        public int Lat { get; set; }
 
         public ICommand SendRequest => new AsyncCommand(async () =>
         {

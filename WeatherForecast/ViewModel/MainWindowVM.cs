@@ -1,18 +1,12 @@
-﻿using DevExpress.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using WeatherAPI.Interfaces;
-
-namespace WeatherForecast.ViewModel
+﻿namespace WeatherForecast.ViewModel
 {
+    using DevExpress.Mvvm;
+    using WeatherAPI.Interfaces;
+
     internal class MainWindowVM : BindableBase
     {
         private readonly IWeatherForecastService _weatherService;
+
         public MainWindowVM(IWeatherForecastService weatherService)
         {
             _weatherService = weatherService;

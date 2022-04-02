@@ -1,24 +1,25 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WeatherAPI.Interfaces;
-using WeatherAPI.Services;
-using WeatherForecast.View;
-using WeatherForecast.ViewModel;
-
-namespace WeatherForecast
+﻿namespace WeatherForecast
 {
+    using System;
+    using Microsoft.Extensions.DependencyInjection;
+    using WeatherAPI.Interfaces;
+    using WeatherAPI.Services;
+    using WeatherForecast.View;
+    using WeatherForecast.ViewModel;
+
     internal static class IoC
     {
-        private static readonly IServiceProvider _serviceProvider;
+        private static readonly IServiceProvider ServiceProvider;
+
         static IoC()
         {
-            _serviceProvider = ConfigureServices();
+            ServiceProvider = ConfigureServices();
         }
-        public static T GetRequiredService<T>() where T : notnull => _serviceProvider.GetRequiredService<T>();
+
+        public static T GetRequiredService<T>()
+            where T : notnull
+            => ServiceProvider.GetRequiredService<T>();
+
         private static IServiceProvider ConfigureServices()
         {
             IServiceCollection services = new ServiceCollection();

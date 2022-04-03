@@ -25,6 +25,8 @@
             IServiceCollection services = new ServiceCollection();
 
             services.AddSingleton<IWeatherForecastService, WeatherForecastService>();
+            services.AddSingleton<IGeocodingService, GeocodingService>();
+
             services.AddTransient<MainWindowVM>();
             services.AddTransient<MainWindow>();
 

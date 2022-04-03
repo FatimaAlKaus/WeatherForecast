@@ -3,8 +3,8 @@
     using System.Configuration;
     using System.Windows.Input;
     using DevExpress.Mvvm;
-    using Newtonsoft.Json;
     using WeatherAPI.Interfaces;
+    using WeatherAPI.Model;
 
     internal class MainWindowVM : BindableBase
     {
@@ -19,16 +19,16 @@
 
         public int Lat { get; set; }
 
+        public string Zip { get; set; } = string.Empty;
+
         public ICommand SendRequest => new AsyncCommand(async () =>
         {
             var key = ConfigurationManager.AppSettings["apiid"] !;
-            string response = await _weatherService.GetCurrentWeather(lat: Lat, lon: Lon, key);
-            dynamic report = JsonConvert.DeserializeObject(response) !;
 
-            Response = report.name;
-            RaisePropertiesChanged("Response");
+            Report = await _weatherService.GetWeatherByZip(Zip, key);
+            RaisePropertyChanged("Report");
         });
 
-        public string Response { get; set; } = string.Empty;
+        public WeatherReport Report { get; set; } = null!;
     }
 }

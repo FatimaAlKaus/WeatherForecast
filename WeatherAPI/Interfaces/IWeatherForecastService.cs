@@ -1,7 +1,11 @@
 ﻿namespace WeatherAPI.Interfaces
 {
+    using WeatherAPI.Model;
+
     public interface IWeatherForecastService
     {
-        public Task<string> GetCurrentWeather(double lat, double lon, string apiId);
+        Task<WeatherReport> GetCurentWeatherByCoordinate(double lat, double lon, string apiId);
+
+        Task<WeatherReport> GetWeatherByZip(string zip, string apiId);
     }
 }

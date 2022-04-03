@@ -26,6 +26,7 @@
 
             services.AddSingleton<IWeatherForecastService, WeatherForecastService>();
             services.AddSingleton<IGeocodingService, GeocodingService>();
+            services.AddSingleton<IPostService, PostService>();
 
             services.AddTransient<MainWindowVM>();
             services.AddTransient<MainWindow>();

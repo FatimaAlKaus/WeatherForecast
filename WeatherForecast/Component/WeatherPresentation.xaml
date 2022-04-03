@@ -30,8 +30,7 @@
         <TextBlock 
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    FontSize="20"
-                    Grid.Column="1"
+                    Grid.Column="0"
                     FontWeight="DemiBold"
                     Text="{Binding ElementName=WeatherControl, Path=DayOfWeek}"/>
         <TextBlock 
@@ -43,9 +42,9 @@
                     Grid.ColumnSpan="3"
                     Text="{Binding ElementName=WeatherControl, Path=Description}"/>
         <TextBlock x:Name="Temperature"
-                    Grid.Column="0"
+                    Grid.Column="1"
                     HorizontalAlignment="Center"
-                    FontSize="{Binding ElementName=Temperature, Path=FontSize}"
+                    FontSize="20"
                     FontWeight="DemiBold"
                     VerticalAlignment="Center" 
                     Text="{Binding ElementName=WeatherControl, Path=Temp,StringFormat=\0 °C }"/>

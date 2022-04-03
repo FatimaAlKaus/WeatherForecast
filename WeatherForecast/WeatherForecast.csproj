@@ -7,7 +7,15 @@
 		<UseWPF>true</UseWPF>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<PackageIcon>umbrella_4500.png</PackageIcon>
 	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Include="C:\Users\nikku\Downloads\umbrella_4500.png">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="DevExpressMvvm" Version="21.1.5" />

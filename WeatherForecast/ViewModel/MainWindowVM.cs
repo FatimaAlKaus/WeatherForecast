@@ -11,33 +11,27 @@
     internal class MainWindowVM : BindableBase
     {
         private readonly IWeatherForecastService _weatherService;
+        private readonly IPostService _postService;
 
-        public MainWindowVM(IWeatherForecastService weatherService)
+        public MainWindowVM(IWeatherForecastService weatherService, IPostService postService)
         {
             _weatherService = weatherService;
+            _postService = postService;
         }
 
-        public int Lon { get; set; }
-
-        public int Lat { get; set; }
-
-        public string Zip { get; set; } = string.Empty;
-
-        public ICommand SendRequest => new AsyncCommand(async () =>
+        public ICommand Predict => new AsyncCommand(async () =>
         {
-            var key = ConfigurationManager.AppSettings["apiid"] !;
-
-            Report = await _weatherService.GetWeatherByZip(Zip, key);
-            Reports = (await _weatherService.GetWeathersFor7Days(Zip, key)).ToList();
-            RaisePropertyChanged("Report");
+            var pKey = ConfigurationManager.AppSettings["PostApiId"] !;
+            var wKey = ConfigurationManager.AppSettings["WeatherApiId"] !;
+            Index = await _postService.GetZipByCityName(CityName, pKey);
+            Reports = (await _weatherService.GetWeathersFor7Days(Index, wKey)).ToList();
             RaisePropertyChanged("Reports");
-            RaisePropertyChanged("FirstRep");
         });
+
+        public string CityName { get; set; } = string.Empty;
 
         public List<WeatherReport> Reports { get; set; } = null!;
 
-        public WeatherReport FirstRep => Reports.First();
-
-        public WeatherReport Report { get; set; } = null!;
+        public string Index { get; set; } = string.Empty;
     }
 }

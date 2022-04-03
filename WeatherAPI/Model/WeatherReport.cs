@@ -1,5 +1,7 @@
 ﻿namespace WeatherAPI.Model
 {
+    using WeatherAPI.Utils;
+
     public class WeatherReport
     {
         public WeatherReport(string description, string icon, double tempDay, double tempNight, double windSpeed)
@@ -13,7 +15,7 @@
 
         public DateTime Date { get; init; }
 
-        public string DayOfWeek => Date.DayOfWeek.ToString();
+        public string DayOfWeek => DayOfWeekToRussian.From(Date.DayOfWeek);
 
         public string Description { get; }
 

@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="WeatherForecast.Component.WeatherPresentation"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WeatherForecast.Component"
+             mc:Ignorable="d" 
+             x:Name="WeatherControl"
+             MinHeight="100"
+             MinWidth="200"
+            >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Border 
+            CornerRadius="20"
+            Background="White"
+            BorderThickness="1"
+            BorderBrush="Black"
+            Grid.ColumnSpan="3">
+        </Border>
+        <Image 
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Grid.Column="2"
+                    Source="{Binding ElementName=WeatherControl, Path=Icon}"/>
+        <TextBlock 
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="20"
+                    Grid.Column="1"
+                    FontWeight="DemiBold"
+                    Text="{Binding ElementName=WeatherControl, Path=DayOfWeek}"/>
+        <TextBlock 
+                    FontSize="14"
+                    FontWeight="DemiBold"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    Margin="20 0 0 0"
+                    Grid.ColumnSpan="3"
+                    Text="{Binding ElementName=WeatherControl, Path=Description}"/>
+        <TextBlock x:Name="Temperature"
+                    Grid.Column="0"
+                    HorizontalAlignment="Center"
+                    FontSize="{Binding ElementName=Temperature, Path=FontSize}"
+                    FontWeight="DemiBold"
+                    VerticalAlignment="Center" 
+                    Text="{Binding ElementName=WeatherControl, Path=Temp,StringFormat=\0 °C }"/>
+            <TextBlock  VerticalAlignment="Bottom" 
+                        Grid.ColumnSpan="3"
+                        Margin="10"
+                        FontWeight="DemiBold"
+                        Text="{Binding ElementName=WeatherControl, Path=WindSpeed,StringFormat=Скорость ветра: {0} м/c}"
+                        />
+    </Grid>
+</UserControl>

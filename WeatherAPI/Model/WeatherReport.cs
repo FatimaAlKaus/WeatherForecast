@@ -2,26 +2,27 @@
 {
     public class WeatherReport
     {
-        public WeatherReport(string description, string icon, double temp, double feelsLike, double windSpeed, string cityName)
+        public WeatherReport(string description, string icon, double tempDay, double tempNight, double windSpeed)
         {
             Description = description;
             Icon = icon;
-            Temp = temp;
-            FeelsLike = feelsLike;
+            TempDay = tempDay;
+            TempNight = tempNight;
             WindSpeed = windSpeed;
-            CityName = cityName;
         }
+
+        public DateTime Date { get; init; }
+
+        public string DayOfWeek => Date.DayOfWeek.ToString();
 
         public string Description { get; }
 
         public string Icon { get; }
 
-        public double Temp { get; }
+        public double TempDay { get; }
 
-        public double FeelsLike { get; }
+        public double TempNight { get; }
 
         public double WindSpeed { get; }
-
-        public string CityName { get; }
     }
 }

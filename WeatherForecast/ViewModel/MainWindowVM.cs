@@ -1,6 +1,8 @@
 ﻿namespace WeatherForecast.ViewModel
 {
+    using System.Collections.Generic;
     using System.Configuration;
+    using System.Linq;
     using System.Windows.Input;
     using DevExpress.Mvvm;
     using WeatherAPI.Interfaces;
@@ -26,8 +28,15 @@
             var key = ConfigurationManager.AppSettings["apiid"] !;
 
             Report = await _weatherService.GetWeatherByZip(Zip, key);
+            Reports = (await _weatherService.GetWeathersFor7Days(Zip, key)).ToList();
             RaisePropertyChanged("Report");
+            RaisePropertyChanged("Reports");
+            RaisePropertyChanged("FirstRep");
         });
+
+        public List<WeatherReport> Reports { get; set; } = null!;
+
+        public WeatherReport FirstRep => Reports.First();
 
         public WeatherReport Report { get; set; } = null!;
     }
